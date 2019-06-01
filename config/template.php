@@ -35,7 +35,9 @@ return [
     'tpl_replace_string'    =>[
 
         '__INDEX__'     =>  '/static/index',
+        '__ADMIN__'     =>  '/static/admin',
         '__BOOTSTRAP__' =>  '/static/bootstrap',
         '__LAYER__'     =>  '/static/layer',
+        
     ],
 ];

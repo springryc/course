@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="__ADMIN__/css/font.css">
+    <link rel="stylesheet" href="__ADMIN__/css/xadmin.css">
+    <script type="text/javascript" src="__ADMIN__/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="__ADMIN__/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="__ADMIN__/js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+		.item-ren .layui-input-inline{
+			width:500px;
+		}
+	</style>
+  </head>
+  
+  <body>
+    <div class="x-body">
+        <form class="layui-form" id="form" action="javascript:void(0)">
+
+          <div class="layui-form-item item-ren">
+              <label for="username" class="layui-form-label">
+                  <span class="x-red">*</span>所属分类
+              </label>
+              <div class="layui-input-inline">
+                  <select name="kind_id" id="kind_id">
+                  	{foreach $it_kinds as $v}
+					<option {:$data.kind_id == $v.id ? 'selected' : ''} value="{$v.id}">{$v.name}</option>
+					{/foreach}
+                  </select>
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red">*</span>请选择所属分类
+              </div>
+          </div>
+          <div class="layui-form-item item-ren" >
+              <label for="phone" class="layui-form-label">
+                  <span class="x-red">*</span>标题
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" value="{$data.title}" id="title" name="title" required="" autocomplete="off" class="layui-input" >
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red">*</span>资源的标题
+              </div>
+          </div>
+          <div class="layui-form-item item-ren">
+              <label for="L_email" class="layui-form-label">
+                  <span class="x-red">*</span>资源网盘地址
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" value="{$data.res_url}" id="res_url" name="res_url" required="" autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red">*</span>资源的地址
+              </div>
+          </div>
+          <div class="layui-form-item item-ren">
+              <label for="L_email" class="layui-form-label">
+                  <span class="x-red">*</span>资源密码
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" value="{$data.password}" id="password" name="password" required="" autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red">*</span>网盘的密码
+              </div>
+          </div>
+          <div class="layui-form-item item-ren">
+              <label class="layui-form-label"><span class="x-red">*</span>资源状态</label>
+              <div class="layui-input-block" id="sta">
+                <input type="radio" name="status" lay-skin="primary" title="启用" {:$data.status == 1 ? "checked" : ""} value="1">
+                <input type="radio" name="status" lay-skin="primary" title="禁用" {:$data.status == 0 ? "checked" : ""} value="0">
+              </div>
+          </div>
+          <div class="layui-form-item item-ren">
+              <label for="L_email" class="layui-form-label">
+                  <span class="x-red">*</span>资源内容
+              </label>
+              <div class="layui-input-inline">
+              	<textarea rows="20" cols="150" name="catalogue" id="catalogue">{$data.catalogue}</textarea>
+                  <!-- <input type="text" value="{$data.password}" id="password" name="password" required="" autocomplete="off" class="layui-input"> -->
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  <span class="x-red">*</span>
+              </div>
+          </div>
+          <div class="layui-form-item item-ren">
+              <label for="L_repass" class="layui-form-label">
+              </label>
+              <button id="tijiao" class="layui-btn" lay-filter="add" lay-submit="">
+                  增加
+              </button>
+          </div>
+          <input type="hidden" name="id" id="ids" value="{$data.id}">
+      </form>
+    </div>
+    <script>
+        layui.use(['form','layer'], function(){
+            $ = layui.jquery;
+          var form = layui.form
+          ,layer = layui.layer;
+        
+          //自定义验证规则
+          form.verify({
+            nikename: function(value){
+              if(value.length < 5){
+                return '昵称至少得5个字符啊';
+              }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,repass: function(value){
+                if($('#L_pass').val()!=$('#L_repass').val()){
+                    return '两次密码不一致';
+                }
+            }
+          });
+
+
+         
+          
+          
+        });
+
+        var isSubmit =1
+          //监听提交
+        $('#tijiao').click(function(){
+          	if(!isSubmit){
+	            layer.msg("正在修改,请稍等",{time:1000});
+	            return false;
+	        }
+          	isSubmit = 0;
+         	//获取id
+         	var id = $("#ids").val();
+            //获取状态
+            var status = $("input[type='radio']:checked").val();
+            //获取分类id
+            var kind_id = $("#kind_id").val();
+            //获取title
+            var title = $("#title").val();
+            //资源网盘地址
+            var res_url = $("#res_url").val();
+            //资源密码
+            var password = $("#password").val();
+            //获取详情
+            var catalogue = $("#catalogue").val();
+
+            var data = {id:id, status:status, kind_id:kind_id, title:title, res_url:res_url, password:password, catalogue:catalogue};
+
+            $.post('/admin/resource/it_edit', data, function(datas){
+            	var res = JSON.parse(datas);
+            	console.log(res);
+            	if(res.state == '200'){
+            		
+            		layer.msg('修改成功', {
+            			icon:1,
+						time: 1000 //2秒关闭（如果不配置，默认是3秒）
+					}, function(){
+						window.parent.location.reload();
+					  	// 获得frame索引
+		                var index = parent.layer.getFrameIndex(window.name);
+		                //关闭当前frame
+		                parent.layer.close(index);
+					});  
+            	}else{
+            		layer.msg(res.hint);
+            	}
+            })
+
+
+        });
+    </script>
+    <script>var _hmt = _hmt || []; (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();</script>
+  </body>
+
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

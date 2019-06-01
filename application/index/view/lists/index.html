@@ -38,46 +38,46 @@ body{
 
     {include file="public/header"}
 
-    <div class="banner_met_16_1_2 page-bg" data-height='' style='' m-id='2' m-type='banner'>
+    <!-- <div class="banner_met_16_1_2 page-bg" data-height='' style='' m-id='2' m-type='banner'>
         <div class="slick-slide">
         <img class="cover-image" src="__INDEX__/picture/1552270257.jpg" srcset='https://images.mituo.cn/mui081/upload/mui081/thumb_src/x_767/1552270257.jpg 767w,https://images.mituo.cn/mui081/upload/mui081/201903/1552270257.jpg' sizes="(max-width: 767px) 767px" alt="" data-height='0|0|0' >
                             </div>
-    </div>
+    </div> -->
 
 
         <div class="location_met_16_1_49 met-crumbs" m-id='49'>
-    <div class="container">
-        <div class="row">
-            <ol class="breadcrumb m-b-0 subcolumn-crumbs">
-                <li class='breadcrumb-item'>
-                    <a href="https://mb.mituo.cn/mui081/" title="网站首页"><em  class='icon wb-home'></em> 网站首页</a>
-                </li>
-                <li class='breadcrumb-item'>
-                    <a href="https://mb.mituo.cn/mui081/case2/" title="特色专业" class=''>特色专业</a>
-                </li>
-            </ol>
-        </div>
-    </div>
-</div>
-
-        <main class="img_list_detail_met_16_1_23 page-content     " m-id='23'>
-    <div class="container">
-        <div class="row">
-        <div class="col-md-9 met-showimg-body     " boxmh-mh m-id='23'>
-        <section class="details-title border-bottom1">
-            <h1 class='m-t-10 m-b-5'>C++</h1>
-            <div class="info">
-                <span><i class="icon wb-time m-r-5" aria-hidden="true"></i>2018-03-21 10:16:28</span>
-                <span><i class="icon wb-eye m-r-5" aria-hidden="true"></i>2</span>
+            <div class="container">
+                <div class="row">
+                    <ol class="breadcrumb m-b-0 subcolumn-crumbs">
+                        <li class='breadcrumb-item'>
+                            <a href="/" title="网站首页"><em  class='icon wb-home'></em> 网站首页</a>
+                        </li>
+                        <!-- <li class='breadcrumb-item'>
+                            <a href="https://mb.mituo.cn/mui081/case2/" title="特色专业" class=''>特色专业</a>
+                        </li> -->
+                    </ol>
+                </div>
             </div>
-        </section>
-        <section class='met-showimg-con'>
+        </div>
 
-            <ul class="liebiao">
-                {foreach $data as $v}
-                <li><a href="/index/lists/detail?id={$v.id}&kind={$kind}">{$v.title}</a></li>
-                {/foreach}
-            </ul>
+    <main class="img_list_detail_met_16_1_23 page-content" m-id='23'>
+        <div class="container">
+            <div class="row">
+            <div class="col-md-9 met-showimg-body" boxmh-mh m-id='23'>
+                <section class="details-title border-bottom1">
+                    <h1 class='m-t-10 m-b-5'>{$kind.name}</h1>
+                    <div class="info">
+                        <span><i class="icon wb-time m-r-5" aria-hidden="true"></i>2018-03-21 10:16:28</span>
+                        <span><i class="icon wb-eye m-r-5" aria-hidden="true"></i>2</span>
+                    </div>
+                </section>
+                <section class='met-showimg-con'>
+
+                <ul class="liebiao">
+                    {foreach $data as $v}
+                    <li><a href="/index/lists/detail?id={$v.id}&kind_id={$kind.pid}">{$v.title}</a></li>
+                    {/foreach}
+                </ul>
             <div style="border-top:1px dashed gray"></div>
            <!--  <div class='met-showimg-list fngallery cover text-xs-center' id="met-imgs-slick"  m-type="displayimgs">
                 <div class='slick-slide'>

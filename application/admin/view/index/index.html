@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商家后台管理中心</title>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="__ADMIN__/css/font.css">
+	<link rel="stylesheet" href="__ADMIN__/css/xadmin.css">
+    <script type="text/javascript" src="__ADMIN__/js/jquery-3.2.1.min.js"></script>
+    <script src="__ADMIN__/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="__ADMIN__/js/xadmin.js"></script>
+
+</head>
+<body>
+    <!-- 顶部开始 -->
+    <div class="container">
+        <div class="logo"><a href="./index.html">商家后台管理</a></div>
+        <div class="left_open">
+            <i title="展开左侧栏" class="iconfont">&#xe699;</i>
+        </div>
+        <ul class="layui-nav left fast-add" lay-filter="">
+          <li class="layui-nav-item">
+            <a href="javascript:;">+新增</a>
+            <dl class="layui-nav-child"> <!-- 二级菜单 -->
+              <dd><a onclick="x_admin_show('资讯','http://www.baidu.com')"><i class="iconfont">&#xe6a2;</i>资讯</a></dd>
+              <dd><a onclick="x_admin_show('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>图片</a></dd>
+               <dd><a onclick="x_admin_show('用户','http://www.baidu.com')"><i class="iconfont">&#xe6b8;</i>用户</a></dd>
+            </dl>
+          </li>
+        </ul>
+        <ul class="layui-nav right" lay-filter="">
+          <li class="layui-nav-item">
+            <a href="javascript:;">{//$sellerData['name']}</a>
+            <dl class="layui-nav-child"> <!-- 二级菜单 -->
+              <dd><a onclick="x_admin_show('个人信息','#')">个人信息</a></dd>
+              <dd><a onclick="x_admin_show('切换帐号','#')">切换帐号</a></dd>
+              <dd><a href="/seller/login/outLogin">退出</a></dd>
+            </dl>
+          </li>
+          <li class="layui-nav-item to-index"><a href="/">前台首页</a></li>
+        </ul>
+        
+    </div>
+    <!-- 顶部结束 -->
+    <!-- 中部开始 -->
+     <!-- 左侧菜单开始 -->
+    <div class="left-nav">
+      <div id="side-nav">
+        <ul id="nav">
+            <!-- <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <cite>会员管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="member-list.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>会员列表</cite>
+                            
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="member-del.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>会员删除</cite>
+                            
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <i class="iconfont">&#xe70b;</i>
+                            <cite>会员管理</cite>
+                            <i class="iconfont nav_right">&#xe697;</i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a _href="xxx.html">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>会员列表</cite>
+                                    
+                                </a>
+                            </li >
+                            <li>
+                                <a _href="xx.html">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>会员删除</cite>
+                                    
+                                </a>
+                            </li>
+                            <li>
+                                <a _href="xx.html">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>等级管理</cite>
+                                    
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </li> -->
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe723;</i>
+                    <cite>资源管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    {foreach $kinds as $v}
+                    <li>
+                        <a _href="/admin/resource/{$v.method}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>{$v.name}</cite>
+                        </a>
+                    </li >
+                    {/foreach}
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe723;</i>
+                    <cite>订单管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="/seller/order/index">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>订单列表</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/seller/order/newOrder">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>新订单</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/seller/order/quotedOrder">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>已报价订单</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/seller/order/deliveryOrder">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>待发货订单</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/seller/order/deliveredOrder">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>已发货订单</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/seller/order/evaluateOrder">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>已收货待评价</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/seller/order/completedOrder">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>已完成订单</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="/seller/order/cancelOrder">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>已取消订单</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+<!--             <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe726;</i>
+                    <cite>管理员管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="admin-list.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>管理员列表</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="admin-role.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>角色管理</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="admin-cate.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>权限分类</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="admin-rule.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>权限管理</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li> -->
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6ce;</i>
+                    <cite>系统统计</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <!-- <li>
+                        <a _href="echarts1.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>拆线图</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="echarts2.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>柱状图</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="echarts3.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>地图</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="echarts4.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>饼图</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="echarts5.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>雷达图</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="echarts6.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>k线图</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="echarts7.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>热力图</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a _href="echarts8.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>仪表图</cite>
+                        </a>
+                    </li> -->
+                </ul>
+            </li>
+        </ul>
+      </div>
+    </div>
+    <!-- <div class="x-slide_left"></div> -->
+    <!-- 左侧菜单结束 -->
+    <!-- 右侧主体开始 -->
+    <div class="page-content">
+        <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
+          <ul class="layui-tab-title">
+            <li>我的桌面</li>
+          </ul>
+          <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <iframe src='./welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="page-content-bg"></div>
+    <!-- 右侧主体结束 -->
+    <!-- 中部结束 -->
+    <!-- 底部开始 -->
+    <div class="footer">
+        <div class="copyright">Copyright ©2017 x-admin v2.3 All Rights Reserved</div>  
+    </div>
+    <!-- 底部结束 -->
+    <!--右下角的弹出提示框-->
+    <div class="reminder">
+    	<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1555645478434" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1313" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64"><defs><style type="text/css"></style></defs><path d="M556.8 876.8c-12.8 12.8-28.8 19.2-44.8 19.2-16 0-32-6.4-44.8-19.2-12.8-12.8-32-12.8-44.8 0s-12.8 32 0 44.8c22.4 22.4 54.4 38.4 89.6 38.4 35.2 0 67.2-12.8 89.6-38.4 12.8-12.8 12.8-32 0-44.8-12.8-12.8-32-12.8-44.8 0zM928 736c-35.2 0-64-28.8-64-64v-224c0-195.2-156.8-352-352-352s-352 156.8-352 352v224c0 35.2-28.8 64-64 64-19.2 0-32 12.8-32 32s12.8 32 32 32h832c19.2 0 32-12.8 32-32s-12.8-32-32-32z m-720 0c9.6-19.2 16-41.6 16-64v-224c0-160 128-288 288-288s288 128 288 288v224c0 22.4 6.4 44.8 16 64h-608z" p-id="1314"></path></svg>
+    </div>
+    <div class="dialog">
+    	<p class="close_dialog">
+    		<span>x</span>
+    	</p>
+    	<div class="dialog_secction">
+    		您有新短消息，请注意查收！
+    	</div>
+    </div>
+    <input type="hidden" class="sess" value="{$Think.session.adminInfo.adminId}" name="">
+    <script>
+    //提示信息图标闪烁 
+	var pic = $(".reminder svg")[0];
+	var status = 1;
+	function run(){ 
+	    if (status == 1) {
+	        pic.style.display = 'block';
+	        status = 0;
+	    } else {
+	        pic.style.display = 'none';
+	        status = 1;
+	    } 
+	} 
+	var ins;
+     // = setInterval('run()',500);
+    //点击提示弹出提示框
+    $(".reminder").on("click",function(){
+    	$(".dialog").show()
+        clearInterval(ins);
+        pic.style.display = 'block';
+    })
+    //关闭右下角的弹出框
+    $(".close_dialog span").on("click",function(){
+    	$(".dialog").hide()
+        clearInterval(ins);
+        pic.style.display = 'block';
+    })
+
+
+
+    //swoole通讯
+    var business_id = $('.sess').val();
+    console.log(business_id);
+    var ws = new WebSocket("ws://39.98.223.132:9503");
+    ws.onopen = function()
+    {
+        var arr = [business_id];
+        ws.send(arr)
+        console.log("已发送商家id="+business_id+"<br>");
+        // ws.send("hello")
+    };
+    ws.onmessage = function(evt)
+    {
+        console.log('收到新消息了：'+evt.data);
+        $(".dialog_secction").text(evt.data);
+        ins = setInterval('run()',500);
+    };
+    ws.onclose = function(evt)
+    {
+        console.log("WebSocketClosed!");
+    };
+    ws.onerror = function(evt)
+    {
+        console.log("WebSocketError!");
+    };
+
+    $('#send_btn').click(function(_this) {
+
+    });
+    
+    </script>
+</body>
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

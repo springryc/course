@@ -55,8 +55,7 @@
 
 
 
-            <div class="banner_met_16_1_2 page-bg" data-height='' style='' m-id='2'
-            m-type='banner'>
+            <div class="banner_met_16_1_2 page-bg" data-height='' style='' m-id='2' m-type='banner'>
                 <div class="slick-slide">
                     <img class="cover-image" src="__INDEX__/picture/1553062144.jpg" srcset='https://images.mituo.cn/mui081/upload/mui081/thumb_src/x_767/1553062144.jpg 767w,https://images.mituo.cn/mui081/upload/mui081/201903/1553062144.jpg'
                     sizes="(max-width: 767px) 767px" alt="" data-height='0|0|0'>
@@ -410,8 +409,7 @@
                         {foreach :getList($value.id) as $v}
                         <li>
                             <a href="/index/lists/index?kind_id={$v.id}" title="{$v.name}">
-                                <img data-original="https://images.mituo.cn/mui081/upload/mui081/thumb_src/1521599243.png"
-                                alt="" style="width:100%;" />
+                                <img data-original="{$v.image_path}" alt="" style="width:100%;" />
                             </a>
                             <h4>
                                 <a href="/index/lists/index?kind_id={$v.id}" title="{$v.name}">

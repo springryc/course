@@ -16,13 +16,13 @@ class Base extends Controller
         $userData = '';
 
         //-----------------------------------------上传需要注释掉此区间代码
-//            $arr = [
-//                'userId'=>50,
-//                'account'=>'0000000149',
-//                'vip'=>1,
-//                'time'=>time()
-//            ];
-//            session('userInfo',$arr);
+           $arr = [
+               'userId'=>1,
+               'account'=>'0000000149',
+               'vip'=>1,
+               'time'=>time()
+           ];
+           session('userInfo',$arr);
         //-----------------------------------------
         
         $userInfo = session('userInfo');

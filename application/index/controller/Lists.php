@@ -14,12 +14,12 @@ class Lists extends Base
     public function index()
     {
         $kind_id = input('kind_id');
-        $pid = model('Kind')->where('id', $kind_id)->value('pid');
+        $kind = model('Kind')->find($kind_id);
 
-        $model = model('Kind')->where('id', $pid)->value('model');
+        $model = model('Kind')->where('id', $kind['pid'])->value('model');
 
         $data = model($model)->paginate(20);
-        $this->assign('kind', $pid);
+        $this->assign('kind', $kind);
         $this->assign('data', $data);
         return $this->fetch();
     }
@@ -30,9 +30,11 @@ class Lists extends Base
     public function detail()
     {
         $id = input('id');
-        $kind_id = input('kind');
+        $kind_id = input('kind_id');
         $model = model('Kind')->where('id', $kind_id)->value('model');
         // dump($kind_id);die;
+        //增加浏览量1
+        model($model)->where('id', $id)->setInc('view_num', 1);
         $data = model($model)->find($id);
 
         $this->assign('data', $data);
