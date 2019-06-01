@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html class="">
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,minimal-ui">
+        <meta name="format-detection" content="telephone=no">
+        <title>
+            代码村首页
+        </title>
+        <meta name="description" content="JAVA,PHP,Python,C/C++,C#等最全的学习资源网站">
+        <meta name="keywords" content="JAVA,PHP,Python,C/C++,C#等最全的学习资源网站">
+        <meta name="generator" content="" data-variable="cn|cn|mui081|10001|10001|0" data-user_name="">
+        <!-- <link href="https://mb.mituo.cn/mui081/favicon.ico" rel="shortcut icon" type="image/x-icon"> -->
+        <link rel="stylesheet" type="text/css" href="__INDEX__/css/basic.css">
+        <link rel="stylesheet" type="text/css" href="__INDEX__/css/index_cn.css">
+        <style>
+            body{ background-color:#ffffff !important;font-family: !important;}
+        </style>
+        <!--[if lte IE 9]>
+            <script src="__INDEX__/js/lteie9.js">
+            </script>
+        <![endif]-->
+        <script src="__INDEX__/js/met_temdemo.js">
+        </script>
+    </head>
+    <!--[if lte IE 8]>
+        <div class="text-xs-center m-b-0 bg-blue-grey-100 alert">
+            <button type="button" class="close" aria-label="Close" data-dismiss="alert">
+                <span aria-hidden="true">
+                    ×
+                </span>
+            </button>
+            你正在使用一个
+            <strong>
+                过时
+            </strong>
+            的浏览器。请
+            <a href=https://browsehappy.com/ target=_blank>
+                升级您的浏览器
+            </a>
+            ，以提高您的体验。
+        </div>
+    <![endif]-->
+    
+    <body>
+        
+        <body class="met-navfixed">
+
+
+            <!-- 引入网站头部 -->
+            {include file="public/header"}
+
+
+
+            <div class="banner_met_16_1_2 page-bg" data-height='' style='' m-id='2'
+            m-type='banner'>
+                <div class="slick-slide">
+                    <img class="cover-image" src="__INDEX__/picture/1553062144.jpg" srcset='https://images.mituo.cn/mui081/upload/mui081/thumb_src/x_767/1553062144.jpg 767w,https://images.mituo.cn/mui081/upload/mui081/201903/1553062144.jpg'
+                    sizes="(max-width: 767px) 767px" alt="" data-height='0|0|0'>
+                </div>
+                <div class="slick-slide">
+                    <img class="cover-image" src="__INDEX__/picture/1521601968.jpg" srcset='https://images.mituo.cn/mui081/upload/mui081/thumb_src/x_767/1521601968.jpg 767w,https://images.mituo.cn/mui081/upload/mui081/201803/1521601968.jpg'
+                    sizes="(max-width: 767px) 767px" alt="" data-height='0|0|0'>
+                </div>
+            </div>
+            {foreach $kinds as $value}
+            <div class="product_list_met_21_2_30 met-index-body met-index-topic     bgcolor"
+            m-id='30'>
+                <div class="container">
+                    <div class="navigation">
+                        <h2 class="i-themetitle col-md-4">
+                            <span>
+                                {$value.name}
+                            </span>
+                            <span class="tu">
+                                
+                            </span>
+                        </h2>
+                        <div class="slider col-md-8" id="topic">
+                        </div>
+                    </div>
+                    <ul class="blocks-lg-4 blocks-md-4 blocks-sm-2 blocks-xs-2" data-scale="">
+
+                        {foreach :getList($value.id) as $v}
+                        <li>
+                            <a href="/index/lists/index?kind_id={$v.id}" title="{$v.name}">
+                                <img data-original="{$v.image_path}"
+                                alt="" style="width:100%;" />
+                            </a>
+                            <h4>
+                                <a href="/index/lists/index?kind_id={$v.id}" title="{$v.name}">
+                                    {$v.name}
+                                </a>
+                            </h4>
+                        </li>
+                        {/foreach}
+                      
+                    
+                    </ul>
+                </div>
+            </div>
+            {/foreach}
+
+
+
+
+            {include file="public/footer"}
+
+            
+          
+            </div>
+            <button type="button" class="btn btn-icon btn-primary btn-squared back_top_met_16_1_5 met-scroll-top     "
+            hidden m-id='5' m-type='nocontent'>
+                <i class="icon wb-chevron-up" aria-hidden="true">
+                </i>
+            </button>
+            <input type="hidden" name="met_lazyloadbg" value="">
+            <script src="__INDEX__/js/basic.js">
+            </script>
+            <script>
+                var metpagejs = "__INDEX__/js/index_cn.js";
+                if (typeof jQuery != "undefined") {
+                    metPageJs(metpagejs);
+                } else {
+                    var metPageInterval = setInterval(function() {
+                        if (typeof jQuery != "undefined") {
+                            metPageJs(metpagejs);
+                            clearInterval(metPageInterval);
+                        }
+                    },
+                    50)
+                }
+            </script>
+            <script src="__INDEX__/js/lang_json_cn.js">
+            </script>
+        </body>
+        <script>
+            var _hmt = _hmt || []; (function() {
+                var hm = document.createElement("script");
+                hm.src = "__INDEX__/js/hm.js";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+
+</html>
